@@ -1,5 +1,6 @@
 package com.example.calculator
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
@@ -107,13 +108,11 @@ class MainActivity : AppCompatActivity() {
                       var one = splitvalue[0]
                       var two = splitvalue[1]
 
-                      if( prefix.isNotEmpty()){
+                     /* if( prefix.isNotEmpty()){
                           one = prefix + one
-                      }
+                      }*/
                         var result = removeZero((one.toDouble() - two.toDouble()).toString())
                       tvInput?.text = result
-
-
                   }else if (tvvalue.contains("+")) {
                       val splitvalue =
                           tvvalue.split("+")// spilt the value and enter the value in array
@@ -156,7 +155,8 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    private fun removeZero( result: String ): String {
+    @SuppressLint("SuspiciousIndentation")
+    private fun removeZero(result: String ): String {
         var value = result
         if( result.contains(".0"))
            value = result.substring(0,result.length - 2 )
